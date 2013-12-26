@@ -41,6 +41,8 @@ class AccountsController < ApplicationController
 
   def current_account
     Account.find(cookies[:account_id]) if cookies[:account_id]
+  rescue
+    cookies[:account_id] = nil
   end
 
   def assign_account
