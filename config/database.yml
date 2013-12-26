@@ -1,0 +1,25 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: laundry_alert_development
+  pool: 5
+  username: efatsi
+  password:
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: laundry_alert_test
+  pool: 5
+  username: efatsi
+  password:
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: laundry_alert_production
+  pool: 5
+  username: efatsi
+  password:
