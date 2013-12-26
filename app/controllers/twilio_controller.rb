@@ -1,4 +1,5 @@
 class TwilioController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def process_sms
     if account = Account.find_by_phone(params[:From][2,10])
