@@ -38,4 +38,5 @@ h3.no-margin {
 
 .info {
   margin: 30px;
+  word-wrap: break-word;
 }
