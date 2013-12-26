@@ -43,6 +43,7 @@ class AccountsController < ApplicationController
     Account.find(cookies[:account_id]) if cookies[:account_id]
   rescue
     cookies[:account_id] = nil
+    return false
   end
 
   def assign_account
