@@ -1,0 +1,53 @@
+class AccountsController < ApplicationController
+  before_action :assign_account, :only => [:show, :edit, :update]
+
+  def new
+    redirect_to '/account' if logged_in?
+
+    @account = Account.new
+  end
+
+  def create
+    @account = Account.new(account_params)
+
+    if @account.save
+      cookies.permanent[:account_id] = @account.id
+      redirect_to '/account'
+    else
+      render :new
+    end
+  end
+
+  def show
+    redirect_to '/' unless logged_in?
+  end
+
+  def edit
+  end
+
+  def update
+    if @account.update_attributes(account_params)
+      redirect_to '/account'
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def logged_in?
+    current_account.present?
+  end
+
+  def current_account
+    Account.find(cookies[:account_id]) if cookies[:account_id]
+  end
+
+  def assign_account
+    @account = current_account
+  end
+
+  def account_params
+    params[:account].permit!
+  end
+end

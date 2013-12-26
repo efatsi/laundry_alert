@@ -1,0 +1,18 @@
+<%= content_for :title, "Your Info" %>
+
+<div class="info">
+  <h4>Phone</h4>
+  <%= @account.display_phone %>
+</div>
+
+<div class="info">
+  <h4>Access Token</h4>
+  <%= @account.access_token %>
+</div>
+
+<div class="info">
+  <h4>Core ID</h4>
+  <%= @account.core_id %>
+</div>
+
+<%= link_to "Edit", edit_account_path, :class => 'btn btn-primary' %>

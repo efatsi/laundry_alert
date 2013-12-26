@@ -1,0 +1,17 @@
+<%= simple_form_for @account, :url => account_path do |f| %>
+  <%= f.label :phone, "* Phone Number" %>
+  <%= f.input :phone, :label => false, :input_html => {:maxlength => 20, :class => 'form-control'} %>
+
+  <%= f.label :access_token, "* Access Token" %>
+  <%= f.input :access_token, :label => false, :input_html => {:class => 'form-control'} %>
+
+  <%= f.label :core_id, "* Core ID" %>
+  <%= f.input :core_id, :label => false, :input_html => {:class => 'form-control'} %>
+  <br>
+  <div class="btn-group-vertical">
+    <%= f.submit "Submit", :class => 'btn btn-success wide' %>
+    <% if @account.persisted? %>
+      <%= link_to "Cancel", :back, :class => "btn btn-danger wide" %>
+    <% end %>
+  </div>
+<% end %>

@@ -11,3 +11,31 @@
  *= require_self
  *= require_tree .
  */
+
+.center {
+  width: 320px;
+  margin: 0 auto 20px;
+  text-align: center;
+  background: lightblue;
+  border-radius: 7px;
+  padding-bottom: 40px;
+}
+
+input.string {
+  width: 200px;
+  border-radius: 7px;
+  margin: 0 auto 10px;
+}
+
+.btn, .btn-group-vertical>.btn.wide {
+  width: 200px;
+}
+
+h3.no-margin {
+  padding-top: 15px;
+  margin: 0;
+}
+
+.info {
+  margin: 30px;
+}
