@@ -3,6 +3,7 @@ class TwilioController < ApplicationController
 
   def process_sms
     if account = Account.find_by_phone(params[:From][2,10])
+      account.update_attributes(:watching => true)
       @response = random_response
     else
       @response = "Looks like you're not signed up on laundryalert.herokuapp.com."
