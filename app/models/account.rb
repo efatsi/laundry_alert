@@ -10,7 +10,7 @@ class Account < ActiveRecord::Base
   scope :watching, -> { where(:watching => true) }
 
   def core
-    @core ||= RubySpark::Core.new(core_id, access_token)
+    @core ||= RubySpark::Tinker.new(core_id, access_token)
   end
 
   def display_phone
