@@ -31,6 +31,7 @@ class Account < ActiveRecord::Base
   def get_data
     reading = core.variable("lastminute")
     latest_run.add(reading)
+  rescue
   end
 
   def configure
