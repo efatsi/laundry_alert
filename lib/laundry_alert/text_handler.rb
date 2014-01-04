@@ -7,10 +7,10 @@ module LaundryAlert
     end
 
     def response
-      if text.include? 'configure'
-        account.configure
+      if @text.include? 'configure'
+        @account.configure
       else
-        account.watch(machine_type)
+        @account.watch(machine_type)
       end
 
       random_response
@@ -19,7 +19,7 @@ module LaundryAlert
     private
 
     def machine_type
-      text.include? 'dryer' ? 'dryer' : 'washer'
+      @text.include? 'dryer' ? 'dryer' : 'washer'
     end
 
     def random_response
