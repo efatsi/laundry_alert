@@ -15,4 +15,11 @@
   <%= @account.core_id %>
 </div>
 
+<div class="info">
+  <h4>Runs</h4>
+  <% @account.runs.reverse.each do |run| %>
+    <%= link_to run, run %>
+  <% end %>
+</div>
+
 <%= link_to "Edit", edit_account_path, :class => 'btn btn-primary' %>

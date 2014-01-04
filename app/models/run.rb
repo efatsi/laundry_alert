@@ -4,6 +4,10 @@ class Run < ActiveRecord::Base
   validates :account, :machine_type, :presence => true
   validates :machine_type, :inclusion => { :in => %w(washer dryer) }
 
+  def to_s
+    created_at.strftime("#{machine_type.capitalize} - %b %_d, %_I:%M %P")
+  end
+
   def add(reading)
     data_set = raw_data
     data_set += [reading]

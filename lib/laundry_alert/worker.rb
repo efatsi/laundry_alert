@@ -14,7 +14,7 @@ module LaundryAlert
 
       def alert(account)
         account.update_attributes(:watching => false)
-        machine = account.latest_run.machine_type.upcase
+        machine = account.latest_run.machine_type.capitalize
 
         LaundryAlert::TwilioClient.send(account.twilio_phone, "#{machine}'s all done. Go get it!")
       end
