@@ -19,7 +19,7 @@ module LaundryAlert
     private
 
     def machine_type
-      @text.include? 'dryer' ? 'dryer' : 'washer'
+      @text.include?('dryer') ? 'dryer' : 'washer'
     end
 
     def random_response
