@@ -1,6 +1,6 @@
 <%= javascript_include_tag "application" %>
 
-<div style="width: 800px; margin: 0 auto;">
+<div style="margin: 0 auto;">
   <div id="container"></div>
 
   <script>
@@ -9,13 +9,28 @@
     new Highcharts.Chart({
       chart: {
         backgroundColor: '#eee',
-        height: 500,
-        width: 800,
+        height: 700,
         renderTo: 'container'
       },
       title: { text: '' },
-      yAxis: {
-        title: { text: 'Reading' },
+      yAxis: [{
+          title: { text: 'Reading' },
+          min: 0,
+          plotLines: [
+            {
+              color: '#FF0000',
+              width: 2,
+              value: <%= @run.account.high_threshold %>
+            },
+            {
+              color: '#0000FF',
+              width: 2,
+              value: <%= @run.account.low_threshold %>
+            }
+          ]
+      }],
+      xAxis: {
+        title: { text: 'Minutes' },
         min: 0
       },
       series: [

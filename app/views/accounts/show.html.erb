@@ -17,9 +17,11 @@
 
 <div class="info">
   <h4>Runs</h4>
-  <% @account.runs.reverse.each do |run| %>
-    <%= link_to run, run %>
-  <% end %>
+  <ul style="list-style:none; margin: 0; padding: 0;">
+    <% @account.runs.reverse.each do |run| %>
+      <li><%= link_to run, run %></li>
+    <% end %>
+  </ul>
 </div>
 
-<%= link_to "Edit", edit_account_path, :class => 'btn btn-primary' %>
+<%= link_to "Edit Info", edit_account_path, :class => 'btn btn-primary' %>
