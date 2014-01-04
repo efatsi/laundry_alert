@@ -33,7 +33,7 @@ class AccountsController < ApplicationController
     end
   end
 
-  private
+  # private
 
   def logged_in?
     current_account.present?

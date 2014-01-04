@@ -38,7 +38,7 @@ class Account < ActiveRecord::Base
     # do something with latest_run
   end
 
-  private
+  # private
 
   def latest_run
     @latest_run ||= runs.last
