@@ -7,6 +7,8 @@ class Account < ActiveRecord::Base
 
   before_validation :strip_phone
 
+  has_many :runs
+
   scope :watching, -> { where(:watching => true) }
 
   def core
@@ -21,7 +23,25 @@ class Account < ActiveRecord::Base
     "+1" + phone
   end
 
+  def watch(machine_type)
+    runs.create(:machine_type => machine_type)
+    update_attributes(:watching => true)
+  end
+
+  def get_data
+    reading = core.variable("lastminute")
+    latest_run.add(reading)
+  end
+
+  def configure
+    # do something with latest_run
+  end
+
   private
+
+  def latest_run
+    @latest_run ||= runs.last
+  end
 
   def strip_phone
     self.phone = phone.gsub(/[^0-9]/, "") if phone?

@@ -1,0 +1,27 @@
+class Run < ActiveRecord::Base
+  belongs_to :account
+
+  validates :account, :machine_type, :presence => true
+  validates :machine_type, :inclusion => { :in => %w(washer dryer) }
+
+  def add(reading)
+    data_set = raw_data
+    data_set += [reading]
+
+    update_attributes(:data => data_set.join(","))
+  end
+
+  def finished?
+    LaundryAlert::FinishChecker.finished?(self)
+  end
+
+  def raw_data
+    @raw_data ||= begin
+      data.present? ? data.split(",").map(&:to_i) : []
+    end
+  end
+
+  def washer?
+    machine_type == 'washer'
+  end
+end

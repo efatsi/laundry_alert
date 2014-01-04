@@ -1,0 +1,31 @@
+<%= javascript_include_tag "application" %>
+
+<div style="width: 800px; margin: 0 auto;">
+  <div id="container"></div>
+
+  <script>
+    var $container = $("#container")
+
+    new Highcharts.Chart({
+      chart: {
+        backgroundColor: '#eee',
+        height: 500,
+        width: 800,
+        renderTo: 'container'
+      },
+      title: { text: '' },
+      yAxis: {
+        title: { text: 'Reading' },
+        min: 0
+      },
+      series: [
+        {
+          name: "Run",
+          pointInterval: 1,
+          pointStart: 0,
+          data: [<%= @run.data %>]
+        }
+      ]
+    });
+  </script>
+</div>

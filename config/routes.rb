@@ -4,4 +4,5 @@ LaundryAlert::Application.routes.draw do
   get 'check_em', :to => 'worker#go'
 
   resource :account
+  resources :runs, :only => [:show]
 end

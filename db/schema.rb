@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131226190557) do
+ActiveRecord::Schema.define(version: 20140103220109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,17 @@ ActiveRecord::Schema.define(version: 20131226190557) do
     t.string   "core_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "watching",     default: false
+    t.boolean  "watching",       default: false
+    t.integer  "low_threshold"
+    t.integer  "high_threshold"
+  end
+
+  create_table "runs", force: true do |t|
+    t.string   "machine_type"
+    t.integer  "account_id"
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

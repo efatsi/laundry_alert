@@ -1,20 +1,24 @@
 module LaundryAlert
   class Worker
-
     class << self
 
       def do_work
         Account.watching.each do |account|
-          alert(account) if account.core.analog_read(6) < 500
+          account.get_data
+
+          if account.latest_run.finished?
+            alert(account)
+          end
         end
       end
 
       def alert(account)
         account.update_attributes(:watching => false)
-        LaundryAlert::TwilioClient.send(account.twilio_phone, "Laundry's all done. Go get it!")
+        machine = account.latest_run.machine_type.upcase
+
+        LaundryAlert::TwilioClient.send(account.twilio_phone, "#{machine}'s all done. Go get it!")
       end
 
     end
-
   end
 end

@@ -1,7 +1,7 @@
 class WorkerController < ApplicationController
 
   def go
-    LaundryAlert::Worker.do_work
+    LaundryAlert::Worker.check
 
     render :nothing => true
   end
