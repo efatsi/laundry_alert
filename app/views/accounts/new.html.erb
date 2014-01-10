@@ -1,3 +1,15 @@
 <%= content_for :title, "Register your Core and Phone Number" %>
 
 <%= render "form" %>
+
+<hr>
+
+<h3 class='thin'>Or login with your existing account</h3>
+<br>
+<%= simple_form_for :existing_account, :url => login_path do |f| %>
+  <%= f.label :phone, "* Phone Number" %>
+  <%= f.input :phone, :label => false, :input_html => {:maxlength => 20, :class => 'form-control'} %>
+  <br>
+  <%= f.submit "Login", :class => 'btn btn-primary wide' %>
+
+<% end %>

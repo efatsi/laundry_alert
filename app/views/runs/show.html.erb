@@ -1,6 +1,8 @@
 <%= javascript_include_tag "application" %>
+<%= stylesheet_link_tag "application" %>
 
-<div style="margin: 0 auto;">
+<div class="graph-page">
+  <div><%= link_to "Back", root_url, :class => 'btn btn-primary btn-graph' %>
   <div id="container"></div>
 
   <script>

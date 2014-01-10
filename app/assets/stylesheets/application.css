@@ -12,7 +12,7 @@
  *= require_tree .
  */
 
-.center {
+ .center {
   width: 320px;
   margin: 0 auto 20px;
   text-align: center;
@@ -39,4 +39,20 @@ h3.no-margin {
 .info {
   margin: 30px;
   word-wrap: break-word;
+}
+
+.graph-page {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.btn.btn-graph {
+  width: 100%;
+  border-radius: 0px;
+}
+
+.thin {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }

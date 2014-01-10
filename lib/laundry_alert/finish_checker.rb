@@ -21,10 +21,11 @@ module LaundryAlert
       @data.last < @account.low_threshold
     end
 
-    # need 3 in a row over the threshold
+    # need 4 in a row over the threshold
     def high_cycle_passed?
-      @data.count.times do |i|
-        if (@data[i] > threshold) && (@data[i+1] > threshold) && (@data[i+2] > threshold)
+      (@data.count - 3).times do |i|
+        if (@data[i]   > threshold) && (@data[i+1] > threshold) &&
+           (@data[i+2] > threshold) && (@data[i+3] > threshold)
           return true
         end
       end

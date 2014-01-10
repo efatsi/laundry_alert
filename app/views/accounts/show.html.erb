@@ -18,7 +18,7 @@
 <div class="info">
   <h4>Runs</h4>
   <ul style="list-style:none; margin: 0; padding: 0;">
-    <% @account.runs.reverse.each do |run| %>
+    <% @account.runs.by_date.each do |run| %>
       <li><%= link_to run, run %></li>
     <% end %>
   </ul>

@@ -4,6 +4,8 @@ class Run < ActiveRecord::Base
   validates :account, :machine_type, :presence => true
   validates :machine_type, :inclusion => { :in => %w(washer dryer) }
 
+  scope :by_date, -> { order('created_at DESC') }
+
   def to_s
     created_at.strftime("#{machine_type.capitalize} - %b %_d, %_I:%M %P")
   end
