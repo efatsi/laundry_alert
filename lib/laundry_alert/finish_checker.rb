@@ -12,7 +12,7 @@ module LaundryAlert
     end
 
     def finished?
-      @data.any? && stopped? && high_cycle_passed?
+      @data.any? && stopped? && (high_cycle_passed? || machine_is_done?)
     end
 
     # private
@@ -28,6 +28,28 @@ module LaundryAlert
            (@data[i+2] > threshold)
           return true
         end
+      end
+
+      return false
+    end
+
+    def machine_is_done?
+      high_point_reached? && in_serious_low_cycle?
+    end
+
+    def in_serious_low_cycle?
+      return false if @data.length < 6
+
+      @data[@data.length-6..@data.length].each do |reading|
+        return false if reading > @account.high_threshold
+      end
+
+      return true
+    end
+
+    def high_point_reached?
+      @data.each do |reading|
+        return true if reading > threshold
       end
 
       return false

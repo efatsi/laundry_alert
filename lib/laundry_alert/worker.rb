@@ -6,6 +6,8 @@ module LaundryAlert
         Account.watching.each do |account|
           account.get_data
 
+          sleep(2)
+
           if account.latest_run.finished?
             alert(account)
           end
