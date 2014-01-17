@@ -7,6 +7,12 @@
 
   <%= f.label :core_id, "* Core ID" %>
   <%= f.input :core_id, :label => false, :input_html => {:class => 'form-control'} %>
+
+  <%= f.label :high_threshold, "High Threshold" %>
+  <%= f.input :high_threshold, :label => false, :input_html => {:class => 'form-control'} %>
+
+  <%= f.label :low_threshold, "Low Threshold" %>
+  <%= f.input :low_threshold, :label => false, :input_html => {:class => 'form-control'} %>
   <br>
   <div class="btn-group-vertical">
     <%= f.submit "Submit", :class => 'btn btn-success wide' %>
